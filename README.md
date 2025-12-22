@@ -1,8 +1,8 @@
-# 🍔 <a href="https://codebasics.io/challenges/codebasics-resume-project-challenge/23">QuickBite Crisis Recovery Analytics</a>
+# 🍔 `<a href="https://codebasics.io/challenges/codebasics-resume-project-challenge/23">`QuickBite Crisis Recovery Analytics `</a>`
 
 ## 📌 Project Overview
 
-QuickBite Express is a Bengaluru-based food delivery startup that faced a major crisis in June 2025 due to food safety violations at partner restaurants and a week-long delivery outage during the monsoon season. This incident triggered customer backlash, order decline, trust erosion, rising acquisition costs, and loss of restaurant partners.
+**QuickBite Express is a Bengaluru-based food delivery startup that faced a major crisis in June 2025 due to food safety violations at partner restaurants and a week-long delivery outage during the monsoon season.** This incident triggered customer backlash, order decline, trust erosion, rising acquisition costs, and loss of restaurant partners.
 
 This repository presents an **end-to-end analytics case study** designed to support **crisis recovery and turnaround strategy**. Using **Microsoft Fabric** and a **Medallion Architecture (Bronze–Silver–Gold)** approach, the project delivers actionable insights across customer behavior, delivery operations, restaurant partnerships, campaigns, and sentiment.
 
@@ -14,29 +14,29 @@ QuickBite Express, an online food delivery startup, faced a **compound crisis** 
 
 1. **Trust erosion**
 
-   * Viral food safety incidents at partner restaurants
-   * Drop in customer ratings and reviews
+   - Viral food safety incidents at partner restaurants
+   - Drop in customer ratings and reviews
 
 2. **Operational failure**
 
-   * Week-long delivery outage during monsoons
-   * Increased cancellations and SLA breaches
+   - Week-long delivery outage during monsoons
+   - Increased cancellations and SLA breaches
 
 3. **Competitive pressure**
 
-   * Customers and restaurants moving to competitors
-   * Increased customer acquisition costs
+   - Customers and restaurants moving to competitors
+   - Increased customer acquisition costs
 
 The leadership is **not asking for raw metrics** — they want **decision-driven insights** to guide a **recovery strategy**.
 
 The core business questions revolve around:
 
-* **Who to win back**
-* **What changed in customer behavior**
-* **Where operations failed**
-* **How to rebuild trust**
-* **Which partners are worth retaining**
-* **How sentiment is evolving post-crisis**
+- **Who to win back**
+- **What changed in customer behavior**
+- **Where operations failed**
+- **How to rebuild trust**
+- **Which partners are worth retaining**
+- **How sentiment is evolving post-crisis**
 
 ---
 
@@ -57,20 +57,20 @@ The analysis addresses the following management questions:
 
 ### Platform
 
-* **Microsoft Fabric**
+- **Microsoft Fabric**
 
-  * Lakehouse
-  * Dataflow Gen2
-  * Fabric Warehouse
-  * Pipelines
+  - Lakehouse
+  - Dataflow Gen2
+  - Fabric Warehouse
+  - Pipelines
 
 ### Architecture Pattern
 
-* **Medallion Architecture**
+- **Medallion Architecture**
 
-  * **Bronze Layer** – Raw data ingestion
-  * **Silver Layer** – Cleaned and standardized data
-  * **Gold Layer** – Business-ready analytical tables
+  - **Bronze Layer** – Raw data ingestion
+  - **Silver Layer** – Cleaned and standardized data
+  - **Gold Layer** – Business-ready analytical tables
 
 ---
 
@@ -78,14 +78,14 @@ The analysis addresses the following management questions:
 
 **Purpose**:
 
-* Store raw, immutable data exactly as received
-* Act as the single source of truth
+- Store raw, immutable data exactly as received
+- Act as the single source of truth
 
 **Implementation**:
 
-* Data ingested into Fabric Lakehouse
-* Stored as files and converted into Delta tables
-* No transformations or business logic applied
+- Data ingested into Fabric Lakehouse
+- Stored as files and converted into Delta tables
+- No transformations or business logic applied
 
 ---
 
@@ -93,22 +93,22 @@ The analysis addresses the following management questions:
 
 **Tool Used**:
 
-* Dataflow Gen2
+- Dataflow Gen2
 
 **Key Transformations**:
 
-* Schema standardization and data type correction
-* Null and duplicate handling
-* Timestamp normalization
-* Derived attributes such as:
+- Schema standardization and data type correction
+- Null and duplicate handling
+- Timestamp normalization
+- Derived attributes such as:
 
-  * Order phase (Pre-Crisis / Crisis / Recovery)
-  * SLA compliance flags
-  * Active/inactive status indicators
+  - Order phase (Pre-Crisis / Crisis / Recovery)
+  - SLA compliance flags
+  - Active/inactive status indicators
 
 **Outcome**:
 
-* Analytics-ready Delta tables stored in the Lakehouse
+- Analytics-ready Delta tables stored in the Lakehouse
 
 ---
 
@@ -116,20 +116,20 @@ The analysis addresses the following management questions:
 
 **Tool Used**:
 
-* T-SQL in Fabric Warehouse
+- T-SQL in Fabric Warehouse
 
 **Purpose**:
 
-* Create aggregated, insight-focused tables
-* Support dashboards and stakeholder reporting
+- Create aggregated, insight-focused tables
+- Support dashboards and stakeholder reporting
 
 **Examples**:
 
-* Customer recovery segments
-* Order trend summaries
-* Delivery SLA metrics
-* Restaurant value scores
-* Sentiment and rating trends
+- Customer recovery segments
+- Order trend summaries
+- Delivery SLA metrics
+- Restaurant value scores
+- Sentiment and rating trends
 
 ---
 
@@ -139,15 +139,17 @@ Microsoft Fabric Pipelines are used to automate the end-to-end data flow:
 
 1. **Bronze → Silver**
 
-   * Trigger Dataflow Gen2 for cleaning and transformation
+   - Trigger Dataflow Gen2 for cleaning and transformation
+
 2. **Silver → Gold**
 
-   * Execute T-SQL scripts to build analytical tables
+   - Execute T-SQL scripts to build analytical tables
+
 3. **Validation & Monitoring**
 
-   * Row count checks
-   * Data freshness validation
-   * Failure monitoring
+   - Row count checks
+   - Data freshness validation
+   - Failure monitoring
 
 This ensures reliable, repeatable, and scalable data processing.
 
@@ -161,50 +163,50 @@ This ensures reliable, repeatable, and scalable data processing.
 
 Tracks customer orders including financials, timestamps, and cancellation status.
 
-* order_id
-* customer_id
-* restaurant_id
-* delivery_partner_id
-* order_timestamp
-* subtotal_amount
-* discount_amount
-* delivery_fee
-* total_amount
-* is_cod
-* is_cancelled
+- order_id
+- customer_id
+- restaurant_id
+- delivery_partner_id
+- order_timestamp
+- subtotal_amount
+- discount_amount
+- delivery_fee
+- total_amount
+- is_cod
+- is_cancelled
 
 #### fact_order_items
 
 Tracks individual items within each order.
 
-* order_id
-* menu_item_id
-* restaurant_id
-* quantity
-* unit_price
-* item_discount
-* line_total
+- order_id
+- menu_item_id
+- restaurant_id
+- quantity
+- unit_price
+- item_discount
+- line_total
 
 #### fact_ratings
 
 Stores ratings and reviews provided by customers.
 
-* order_id
-* customer_id
-* restaurant_id
-* rating
-* review_text
-* review_timestamp
-* sentiment_score
+- order_id
+- customer_id
+- restaurant_id
+- rating
+- review_text
+- review_timestamp
+- sentiment_score
 
 #### fact_delivery_performance
 
 Tracks delivery efficiency and SLA performance.
 
-* order_id
-* actual_delivery_time_mins
-* expected_delivery_time_mins
-* distance_km
+- order_id
+- actual_delivery_time_mins
+- expected_delivery_time_mins
+- distance_km
 
 ---
 
@@ -214,66 +216,66 @@ Tracks delivery efficiency and SLA performance.
 
 Customer onboarding and acquisition details.
 
-* customer_id
-* signup_date
-* city
-* acquisition_channel
+- customer_id
+- signup_date
+- city
+- acquisition_channel
 
 #### dim_restaurant
 
 Restaurant profile and partnership details.
 
-* restaurant_id
-* restaurant_name
-* city
-* cuisine_type
-* partner_type
-* avg_prep_time
-* is_active
+- restaurant_id
+- restaurant_name
+- city
+- cuisine_type
+- partner_type
+- avg_prep_time
+- is_active
 
 #### dim_delivery_partner
 
 Delivery partner information.
 
-* delivery_partner_id
-* partner_name
-* city
-* vehicle_type
-* employment
-* avg_rating
-* is_active
+- delivery_partner_id
+- partner_name
+- city
+- vehicle_type
+- employment
+- avg_rating
+- is_active
 
 #### dim_menu_item
 
 Menu item details offered by restaurants.
 
-* menu_item_id
-* restaurant_id
-* item_name
-* category
-* is_veg
-* price
+- menu_item_id
+- restaurant_id
+- item_name
+- category
+- is_veg
+- price
 
 ---
 
 ## 📊 Analytical Approach
 
-* Customer segmentation and churn analysis
-* Order trend comparison across crisis phases
-* Delivery delay, cancellation, and SLA analysis
-* Campaign targeting opportunity identification
-* Restaurant partner value and retention analysis
-* Ratings and sentiment trend monitoring
+- Customer segmentation and churn analysis
+- Order trend comparison across crisis phases
+- Delivery delay, cancellation, and SLA analysis
+- Campaign targeting opportunity identification
+- Restaurant partner value and retention analysis
+- Ratings and sentiment trend monitoring
 
 ---
 
 ## 📈 Expected Outcomes
 
-* Identify customer segments with high recovery potential
-* Detect operational bottlenecks impacting delivery performance
-* Prioritize high-value restaurant partnerships
-* Track trust recovery using ratings and sentiment
-* Enable leadership to make data-backed turnaround decisions
+- Identify customer segments with high recovery potential
+- Detect operational bottlenecks impacting delivery performance
+- Prioritize high-value restaurant partnerships
+- Track trust recovery using ratings and sentiment
+- Enable leadership to make data-backed turnaround decisions
 
 ---
 
@@ -292,11 +294,6 @@ QuickBite-Crisis-Recovery-Analytics/
 │   └── README.md
 │
 ├── silver/
-│   ├── dataflows/
-│   │   ├── df_orders_cleaning.json
-│   │   ├── df_customers_cleaning.json
-│   │   ├── df_restaurants_cleaning.json
-│   │   └── df_delivery_performance_cleaning.json
 │   └── README.md
 │
 ├── gold/
@@ -329,22 +326,17 @@ QuickBite-Crisis-Recovery-Analytics/
 
 ### Folder Structure Explanation
 
-* **bronze/**
+- **bronze/**
   Contains raw ingested datasets stored in the Fabric Lakehouse with no transformations applied.
-
-* **silver/**
+- **silver/**
   Holds Dataflow Gen2 definitions used for cleaning, standardizing, and enriching data.
-
-* **gold/**
+- **gold/**
   Contains T-SQL scripts that generate business-ready analytical tables in the Fabric Warehouse.
-
-* **pipelines/**
+- **pipelines/**
   Fabric Pipeline definitions orchestrating Bronze → Silver → Gold data movement.
-
-* **dashboards/**
+- **dashboards/**
   Power BI dashboards and supporting visuals built on Gold layer tables.
-
-* **docs/**
+- **docs/**
   Architecture diagrams, data models, and KPI documentation.
 
 ---
@@ -353,27 +345,27 @@ QuickBite-Crisis-Recovery-Analytics/
 
 1. **Understand the Architecture**
 
-   * Review the Medallion Architecture sections to understand data flow.
+   - Review the Medallion Architecture sections to understand data flow.
 
 2. **Bronze Layer**
 
-   * Raw datasets are stored in the Lakehouse without modification.
+   - Raw datasets are stored in the Lakehouse without modification.
 
 3. **Silver Layer**
 
-   * Open Dataflow Gen2 to review cleaning and transformation logic.
+   - Open Dataflow Gen2 to review cleaning and transformation logic.
 
 4. **Gold Layer**
 
-   * Execute T-SQL scripts in the Warehouse to generate analytical tables.
+   - Execute T-SQL scripts in the Warehouse to generate analytical tables.
 
 5. **Pipelines**
 
-   * Run Fabric Pipelines to orchestrate Bronze → Silver → Gold processing.
+   - Run Fabric Pipelines to orchestrate Bronze → Silver → Gold processing.
 
 6. **Analysis & BI**
 
-   * Use Gold tables for dashboards, reporting, or further analysis.
+   - Use Gold tables for dashboards, reporting, or further analysis.
 
 ---
 
@@ -407,13 +399,10 @@ This project is licensed under the **MIT License**.
 
 You are free to:
 
-* Use, copy, and modify the code
-* Distribute and reuse the project for personal or commercial purposes
+- Use, copy, and modify the code
+- Distribute and reuse the project for personal or commercial purposes
 
 Attribution is appreciated but not required.
 See the `LICENSE` file in this repository for full details.
 
 ---
-
-
-
